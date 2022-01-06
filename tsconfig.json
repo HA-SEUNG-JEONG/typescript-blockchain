@@ -1,10 +1,10 @@
-//이 파일에 TS에게 어떻게 JS로 변환하는지 알려줌녀서 몇몇 옵션을 줌
 {
   "compilerOptions": {
     "module": "commonjs",
     "target": "ES2015",
-    "sourceMap": true
+    "sourceMap": true,
+    "outDir": "dist"
   },
-  "include": ["index.ts"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules"]
 }
