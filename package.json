@@ -1,0 +1,23 @@
+{
+  "name": "typescript-blockchain",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "prestart": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HA-SEUNG-JEONG/typescript-blockchain.git"
+  },
+  "author": "jeong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HA-SEUNG-JEONG/typescript-blockchain/issues"
+  },
+  "homepage": "https://github.com/HA-SEUNG-JEONG/typescript-blockchain#readme",
+  "devDependencies": {
+    "typescript": "^4.5.4"
+  }
+}
