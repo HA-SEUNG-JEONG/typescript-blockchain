@@ -30,3 +30,7 @@ interface들은 js 파일로 컴파일 되지 않는다.
 js에서는 클래스가 어떤 속성을 가지는지 선언할 필요가 없지만 ts에서는 꼭 필요한 작업이다.
 
 class에서 private 변수를 사용하면 class 바깥에서는 해당 변수 사용 불가능
+
+#### Creating Block chain
+
+Block class 내에서 static method를 사용하면 새로운 Block을 생성하지 않아도 된다.
