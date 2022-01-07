@@ -16,3 +16,7 @@ Node.js는 typescript를 이해하지 못하기 때문에 JS코드로 컴파일�
 그렇지 않으면 컴파일도 되지 않는다.
 
 parameter 뒤에 ?를 추가하면 굳이 함수의 parameter로 넘길 필요가 없어진다.
+
+#### interface
+
+object를 넘기고자 할때 Typescript가 object를 이해하고 올바른 타입인지 확인할 수 있도록 해야한다.

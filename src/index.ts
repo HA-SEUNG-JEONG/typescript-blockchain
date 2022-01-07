@@ -1,7 +1,27 @@
-const sayHi = (name: string, age: number, gender: string): string => {
-  return `Hello ${name}, you are ${age}, you are a ${gender}!`;
+/**
+ * types definition of `person`
+ */
+interface Human {
+  name: string;
+  age: number;
+  gender: string;
+}
+
+const person = {
+  name: "jeong",
+  age: 28,
+  gender: "male",
 };
 
-console.log(sayHi("jeong", 24, "male"));
+/**
+ * print a name,age,gender
+ *
+ * @param version name,age,gender
+ */
+const sayHi = (person: Human): string => {
+  return `Hello ${person.name}, you are ${person.age}, you are a ${person.gender}!`;
+};
+
+console.log(sayHi(person));
 
 export {}; // 이 파일이 모듈이 될 수 있도록 고침
