@@ -34,3 +34,60 @@ class에서 private 변수를 사용하면 class 바깥에서는 해당 변수 �
 #### Creating Block chain
 
 Block class 내에서 static method를 사용하면 새로운 Block을 생성하지 않아도 된다.
+
+### 2022 Update
+
+타입스크립트 코드는 컴파일 시 자바스크립트로 변환하지만 컴파일 과정에서 오류가 있을 시 컴파일하지 않는다.
+
+### 타입스크립트의 타입 추론
+
+```ts
+// ex1
+let a = "hello";
+```
+
+타입스크립트는 a가 `string` 타입이라는 걸 바로 알아챈다.
+
+또한 할당 전에 미리 타입을 알려줄수도 있다.
+
+```ts
+// ex2
+let b: boolean = false;
+```
+
+### type alias
+
+```ts
+type Player = {
+  name: string;
+  age?: number;
+};
+
+//Player라는 type을 선언해서 playerMaker functuon의 return 타입 지정
+function playerMaker(name: string): Player {
+  return {
+    name,
+  };
+}
+const nico = playerMaker("nico");
+nico.age = 12; //Player를 return 하지 않으면 오류가 남
+```
+
+```ts
+let a: unknown; //unknown: 변수의 타입을 미리 알지 못할 때 사용
+
+if (typeof a === "number") {
+  let b = a + 1;
+}
+
+if (typeof a === "string") {
+  let b = a.toUpperCase();
+}
+```
+
+```ts
+function hello(): never {
+  //never: 아무것도 return하지 않을 때 사용
+  throw new Error("xxxx");
+}
+```

@@ -121,7 +121,7 @@ const getHashforBlock = (aBlock: Block): string =>
   );
 
 /**
- * call candidate block and previous block
+ * Call candidate block and previous block
  */
 const isBlockValid = (candidateBlock: Block, previousBlock: Block): boolean => {
   if (!Block.validateStructure(candidateBlock)) {
