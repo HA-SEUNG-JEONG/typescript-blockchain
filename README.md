@@ -98,7 +98,7 @@ function hello(): never {
 const add = (a: number, b: number) => a + b;
 ```
 
-위처럼 코드를 작성하고 add에 hover를 해보면 `const add:(a:number,b:number)=>number`라고 뜨는데 이것을 `Call Signature`라고 한다.
+위처럼 코드를 작성하고 add에 hover를 해보면 `const add:(a:number,b:number)=>number`라고 뜨는데, 즉 paramter 타입이 무엇인지, 그리고 함수의 리턴 타입을 설명해주는 것을 `Call Signature`라고 한다.
 
 타입을 미리 지정하여 더욱 간단하게 표현할수도 있다.
 
@@ -107,3 +107,46 @@ type Add = (a: number, b: number) => number;
 
 const add: Add = (a, b) => a + b;
 ```
+
+### Overloading
+
+오버로딩은 함수가 여러개의 call signature를 가지고 있을 때 발생
+
+```ts
+type Add = {
+  //c is optional
+  (a: number, b: number): number;
+  (a: number, b: number, c: number): number;
+};
+
+//c가 선택사항이라는 걸 알려줘야 함
+const add: Add = (a, b, c?: number) => {
+  return a + b;
+};
+```
+
+parameter의 개수가 다를 경우, c는 number일수도 있다고 가정한다.
+
+### Generic
+
+call signature를 작성할 때 확실한 타입을 모를 경우에 사용
+
+```ts
+type SuperPrint = <T>(arr: T[]) => T; //Generic을 사용하여 function 안에 들어가는 element들의 타입을 추론할 수 있도록 한다.
+
+const superprint: SuperPrint = (arr) => {
+  arr.forEach((i) => console.log(i));
+};
+
+superprint([1, 2, 3, 4]);
+superprint([true, false]);
+superprint([1, 2, true, false]);
+```
+
+제네릭을 쓸 때 주의할 점은
+
+```ts
+type SuperPrint = (arr: T[]) => T;
+```
+
+이렇게 쓰면 타입이 없는 것으로 인식하기 때문에 앞에 <T>를 붙여줘야 한다.
