@@ -91,3 +91,19 @@ function hello(): never {
   throw new Error("xxxx");
 }
 ```
+
+### Call Signature
+
+```ts
+const add = (a: number, b: number) => a + b;
+```
+
+위처럼 코드를 작성하고 add에 hover를 해보면 `const add:(a:number,b:number)=>number`라고 뜨는데 이것을 `Call Signature`라고 한다.
+
+타입을 미리 지정하여 더욱 간단하게 표현할수도 있다.
+
+```ts
+type Add = (a: number, b: number) => number;
+
+const add: Add = (a, b) => a + b;
+```
