@@ -150,3 +150,55 @@ type SuperPrint = (arr: T[]) => T;
 ```
 
 이렇게 쓰면 타입이 없는 것으로 인식하기 때문에 앞에 <T>를 붙여줘야 한다.
+
+### Class
+
+```ts
+class Player {
+  constructor(private firstName: string, private lastName: string) {}
+}
+```
+
+타입스크립트에서 위와 같이 private 변수를 선언하면 다음과 같이 자바스크립트에서 코드가 실행된다.
+
+```js
+//자바스크립트 코드에서는 private이 보이지 않는다.
+"use strict";
+class Player {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+}
+```
+
+### Abstract Class
+
+다른 클래스가 상속받을 수 있는 클래스. 타입스크립트에서는 이 클래스로 인스턴스 생성이 불가능하다.
+
+```ts
+abstract class User {
+  //다른 클래스가 상속받을 수 있는 클래스
+  constructor(
+    private firstName: string,
+    private lastName: string,
+    private nick: string
+  ) {}
+  abstract getNickName(): void; //call signature
+  getFullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+}
+
+// 추상 메서드는 추상 클래스를 상속받는 클래스들이 반드시 구현(implement)해야하는 메서드이다.
+// property를 private으로 만들었다면 그 클래스를 상속했을지라도 그 property에 접근이 불가능하다.
+class Player extends User {
+  getNickName() {
+    console.log(jeong.nick);
+  }
+}
+
+const jeong = new Player("jeong", "ha", "seung");
+
+jeong.getFullName();
+```
