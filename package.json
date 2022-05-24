@@ -2,9 +2,8 @@
   "name": "typescript-blockchain",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "start": "npx tsc-watch --onSuccess \" node dist/index.js\""
+    "build": "tsc"
   },
   "repository": {
     "type": "git",

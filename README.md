@@ -194,7 +194,7 @@ abstract class User {
 // property를 private으로 만들었다면 그 클래스를 상속했을지라도 그 property에 접근이 불가능하다.
 class Player extends User {
   getNickName() {
-    console.log(jeong.nick);
+    console.log(jeong.nick); //error
   }
 }
 
@@ -202,3 +202,83 @@ const jeong = new Player("jeong", "ha", "seung");
 
 jeong.getFullName();
 ```
+
+### Interface
+
+원하는 메소드와 property를 클래스가 가지도록 강제,
+자바스크립트 코드로 컴파일 되지는 않는다.
+
+```ts
+type Team = "red" | "blue" | "yellow";
+type Health = 1 | 5 | 10;
+
+interface Player {
+  nickname: string;
+  team: Team;
+  healthBar: number;
+}
+
+const nico: Player = {
+  nickname: "nico",
+  team: "red",
+  healthBar: 10,
+};
+```
+
+interface는 단지 object가 어떻게 생겼는지에 대한 설명을 해준다.
+type 같은 경우에는 `type alias`사용이 가능하다.
+
+```ts
+//ex
+
+type Team = "red" | "blue" | "yellow";
+```
+
+### 확장
+
+```ts
+interface User {
+  name: string;
+}
+
+//interface,type의 확장
+interface Player extends User {}
+
+type Player = User & {};
+
+const jeong: Player = {
+  name: "haha",
+};
+```
+
+```ts
+interface User {
+  firstName: string;
+  lastName: string;
+  sayHi(name: string): string;
+  fullName(): string;
+}
+
+//interface 상속 시에는 property를 private으로 만들 수 없다.
+class Player implements User {
+  constructor(private firstName: string, private lastName: string) {}
+  fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+  sayHi(name: string) {
+    return `Hello ${name}. My name is ${this.fullName()}`;
+  }
+}
+```
+
+추상 클래스를 쓰면 자바스크립트에서는 일반적인 클래스로 바뀌고 파일 크기도 커진다.
+
+만약 추상 클래스를 다른 클래스들이 특정 모양을 따르도록 하기 위한 용도로 쓴다면 `implements` 키워드를 써야한다.
+
+### lib
+
+타입스크립트에게 어떤 API를 사용하고 어떤 환경에서 코드를 실행하는 지를 지정할 수 있다.
+(target 런타임 환경이 무엇인지를 지정.)
+프로그램이 브라우저에서 실행되면 lib에 "DOM" 유형 정의를 할 수 있다.
+DOM: window, document 등
+ex) "lib": ["ES6","DOM"]
